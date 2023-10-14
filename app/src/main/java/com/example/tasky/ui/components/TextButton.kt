@@ -9,11 +9,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
 
 @Composable
 fun TextButton(
@@ -31,22 +29,23 @@ fun TextButton(
     }
 }
 
-
 @Composable
 fun TextButton(
     onClick: () -> Unit,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(
-            Color.Black,
-            contentColor = Color.White
-        ),
-        modifier = Modifier
-            .heightIn(65.dp)
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(percent = 50)
+        colors =
+            ButtonDefaults.buttonColors(
+                Color.Black,
+                contentColor = Color.White,
+            ),
+        modifier =
+            Modifier
+                .heightIn(65.dp)
+                .fillMaxWidth(),
+        shape = RoundedCornerShape(percent = 50),
     ) {
         content()
     }
