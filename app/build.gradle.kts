@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    id("com.google.devtools.ksp") version "1.9.10-1.0.13"
 }
 
 android {
@@ -26,7 +27,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -41,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.3"
     }
     packaging {
         resources {
@@ -67,4 +68,38 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+    // Material Design 3
+    implementation("androidx.compose.material3:material3:1.2.0-alpha04")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.0-rc01")
+
+    // preferences DataStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    // SnapFlingBehavior
+    implementation("androidx.compose.foundation:foundation:1.6.0-alpha02")
+
+    // Icons
+    implementation("androidx.compose.material:material-icons-extended:1.4.3")
+
+    // Room
+
+    val roomVersion = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
+    // To use Kotlin Symbol Processing (KSP)
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.0-alpha02")
+
+    // Splash API
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
+    implementation("io.github.raamcosta.compose-destinations:core:1.9.53")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.9.53")
 }
